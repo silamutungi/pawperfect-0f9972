@@ -34,9 +34,25 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header role="banner" style={{ background: "var(--color-bg-surface)", borderBottom: "1px solid var(--color-border)", position: "sticky", top: 0, zIndex: 50 }}>
-      <nav className="max-w-5xl mx-auto px-6 flex items-center justify-between" style={{ height: "64px" }} aria-label="Main navigation">
-        <Link to="/" className="flex items-center gap-2 font-bold" style={{ fontSize: "var(--text-title-3)", color: "var(--color-text)", textDecoration: "none" }}>
+    <header
+      role="banner"
+      className="sticky top-0 z-50"
+      style={{
+        background: "var(--color-bg-surface)",
+        borderBottom: "1px solid var(--color-border)",
+      }}
+    >
+      <nav
+        className="max-w-5xl mx-auto px-6 flex items-center justify-between"
+        style={{ height: "64px" }}
+        aria-label="Main navigation"
+      >
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-bold"
+          style={{ fontSize: "var(--text-title-3)", color: "var(--color-text)" }}
+        >
           <PawPrint size={24} style={{ color: "var(--color-primary)" }} aria-hidden="true" />
           PawPerfect
         </Link>
@@ -76,7 +92,13 @@ export default function Navbar() {
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          style={{ minHeight: "44px", minWidth: "44px", background: "transparent", border: "none", cursor: "pointer" }}
+          style={{
+            minHeight: "44px",
+            minWidth: "44px",
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+          }}
         >
           <span
             style={{
@@ -114,7 +136,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Backdrop overlay */}
+      {/* Backdrop overlay — mobile only */}
       <div
         className="md:hidden"
         style={{
@@ -131,7 +153,7 @@ export default function Navbar() {
         onClick={() => setOpen(false)}
       />
 
-      {/* Slide-in drawer */}
+      {/* Slide-in drawer — mobile only */}
       <div
         ref={drawerRef}
         className="md:hidden"
